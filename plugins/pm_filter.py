@@ -11,7 +11,7 @@ import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
 make_inactive
 from info import ADMINS, AUTH_CHANNEL, AUTH_USERS, SUPPORT_CHAT_ID, CUSTOM_FILE_CAPTION, MSG_ALRT, PICS, AUTH_GROUPS, P_TTI_SHOW_OFF, GRP_LNK, CHNL_LNK, NOR_IMG, LOG_CHANNEL, SPELL_IMG, MAX_B_TN, IMDB, \
-SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, NO_RESULTS_MSG, IS_VERIFY, HOW_TO_VERIFY
+SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, NO_RESULTS_MSG, PM_LOG
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
@@ -61,12 +61,7 @@ if total_results == 0:
 return
 else :
 return await message.reply_text(
-    text = f"<b>Hᴇʏ {
-        message.from_user.mention
-    }, {
-        str(total_results)} ʀᴇsᴜʟᴛs ᴀʀᴇ ғᴏᴜɴᴅ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ ғᴏʀ ʏᴏᴜʀ ᴏ̨ᴜᴇʀʏ {
-        search
-    }. Kɪɴᴅʟʏ ᴜsᴇ ɪɴʟɪɴᴇ sᴇᴀʀᴄʜ ᴏʀ ᴍᴀᴋᴇ ᴀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴀᴅᴅ ᴍᴇ ᴀs ᴀᴅᴍɪɴ ᴛᴏ ɢᴇᴛ ᴍᴏᴠɪᴇ ғɪʟᴇs. Tʜɪs ɪs ᴀ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ sᴏ ᴛʜᴀᴛ ʏᴏᴜ ᴄᴀɴ'ᴛ ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ...\n\nFᴏʀ Mᴏᴠɪᴇs, Jᴏɪɴ @free_movies_all_languages</b>",
+    text=f"<b>Hey {message.from_user.mention} \nRequest Name : {search}\nTotal Files Found: {str(total_results)} \nJoin Our Group : https://t.me/thefilmyspot ✅ \nThen Request The File Name In Group To Get Those Files 🙂🙏🏼</b>",
     parse_mode = enums.ParseMode.HTML
 )
 @Client.on_message(filters.private & filters.text & filters.incoming)
@@ -76,9 +71,9 @@ user = message.from_user.first_name
 user_id = message.from_user.id
 if content.startswith("/") or content.startswith("#"): return # ignore commands and hashtags
 if user_id in ADMINS: return # ignore admins
-await message.reply_text("<b>Yᴏᴜʀ ᴍᴇssᴀɢᴇ ʜᴀs ʙᴇᴇɴ sᴇɴᴛ ᴛᴏ ᴍʏ ᴍᴏᴅᴇʀᴀᴛᴏʀs !</b>")
+await message.reply_text("<b> This Message Has Been Successfully Forwarded To Admins 🤝🏻!\nIf You Need Movie Files Join @thefilmyspot & Request There 😌🐣</b>")
 await bot.send_message(
-    chat_id = LOG_CHANNEL,
+    chat_id = PM_LOG,
     text = f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {
         user
     }\n\nID : {
